@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Countdown für Lisa</title>
+    <style type="text/css">
+    html, body {
+    background-image:url('./bilder/confetti-21.gif');
+    background-size:100%;
+    background-repeat: repeat-y;
+    background-attachment: fixed;
+    height:100%;
+    width:100%;
+}
+
+body {
+  font-family: 'Francois One', Tahoma, Arial;
+  color: #0041ba;
+  -ms-word-wrap: break-word;
+  word-wrap: break-word;
+  text-transform: uppercase;
+  padding: 0.1em 0;
+  background-image: url("./bilder/Lisa.JPG");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.wrapper_countdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 2em; 
+  background-color: rgba(255, 255, 255, 0.2)
+}
+
+.row_countdown {
+  display: flex;
+}
+
+.column_countdown {
+  text-align: center;
+}
+
+.unit_countdown,
+.value_countdown,
+.mark_countdown1,
+.mark_countdown2,
+.mark_countdown3 {
+  font-size: 2em; 
+}
+.personal {
+  display: center;
+  align-items: center;
+  background-color: #0041ba;
+}
+#myButton, #myButtonText {
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+  font-size: larger;
+}
+
+#myButton {
+  background-color: rgba(33, 12, 223, 0.6);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+#myButtonText {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+    </style>
+    <script>
+      var countDownDate = new Date("Mar 09, 2024 09:10:20").getTime();
+   
+      var x = setInterval(function() {
+   
+        var now = new Date().getTime();
+   
+        var distance = countDownDate - now;
+   
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+   
+        if (distance <= 0) {
+            document.querySelector('.wrapper_countdown').style.display = 'none';
+            document.getElementById("myButton").style.display = 'block';
+            document.getElementById("myButtonText").style.display = 'block'
+        } else {
+            document.querySelector('.wrapper_countdown').style.display = 'flex';
+            document.getElementById("myButton").style.display = 'none';
+            document.getElementById("myButtonText").style.display = 'none';
+            document.getElementById("ctn_days").innerHTML = days;
+            if (hours < 10 && hours > -10) {
+                document.getElementById("ctn_hours").innerHTML = "0" + hours;
+            } else{
+                document.getElementById("ctn_hours").innerHTML = hours;
+            }
+   
+            if (minutes < 10 && minutes > -10) {
+                document.getElementById("ctn_minutes").innerHTML = "0" + minutes;
+            } else{
+                document.getElementById("ctn_minutes").innerHTML = minutes;
+            }
+   
+            if (seconds < 10 && seconds > -10) {
+                document.getElementById("ctn_seconds").innerHTML = "0" + seconds;
+            } else{
+                document.getElementById("ctn_seconds").innerHTML = seconds;
+            }
+            document.getElementById("mark_countdown1").innerHTML = ':';
+            document.getElementById("mark_countdown2").innerHTML = ':';
+            document.getElementById("mark_countdown3").innerHTML = ':';
+            document.getElementById("unit_days").innerHTML = 'Tage';
+            document.getElementById("unit_hours").innerHTML = 'Std.';
+            document.getElementById("unit_minutes").innerHTML = 'Min.';
+            document.getElementById("unit_seconds").innerHTML = 'Sek.';
+   
+        }
+      }, 1000);
+  </script>
+</head>
+<body>
+    <div class="wrapper_countdown">
+        <div class="row_countdown">
+          <div class="column_countdown">
+            <div class="value_countdown" id="ctn_days"></div>
+            <div class="unit_countdown" id="unit_days"></div>
+          </div>
+            <div class="column_countdown">
+            <div class="value_countdown" id="mark_countdown1"></div>    
+          </div>
+          <div class="column_countdown">    
+            <div class="value_countdown" id="ctn_hours"></div>
+            <div class="unit_countdown" id="unit_hours"></div>
+          </div>
+            <div class="column_countdown">
+            <div class="value_countdown" id="mark_countdown2"></div>
+          </div>
+          <div class="column_countdown">    
+            <div class="value_countdown" id="ctn_minutes"></div>
+            <div class="unit_countdown" id="unit_minutes"></div>
+          </div>
+            <div class="column_countdown">
+            <div class="value_countdown" id="mark_countdown3"></div>
+          </div>  
+          <div class="column_countdown">    
+            <div class="value_countdown" id="ctn_seconds"></div>
+            <div class="unit_countdown" id="unit_seconds"></div>
+          </div>
+        </div>
+      </div>
+      <div class="button-container" style="text-align: center;"> <!-- Add this wrapper -->
+        <p id="myButtonText" style="color: aliceblue; ">Falls du bereit bist für die Überraschung <br>und auch wirklich alleine bist.</p>
+        <button id="myButton" onclick="window.location.href='./index.html'">Klicke Hier</button>
+    </div>
+</body>
+</html>
